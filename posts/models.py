@@ -23,11 +23,6 @@ class Comment(models.Model):
     def __str__(self):
         return self.name
 
-# class Like(models.Model):
-#     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='like_history')
-#     post = models.ForeignKey(Posts, on_delete=models.CASCADE)
-#     like = models.IntegerField(default=0,null=True,blank=True)
-#     dislike = models.IntegerField(default=0,null=True,blank=True)
-#     like_permi = models.BooleanField(default=False,null=True,blank=True)
-#     dislike_permi = models.BooleanField(default=False,null=True,blank=True)
-#     like_date = models.DateTimeField(auto_now_add=True, blank = True, null = True)
+class Like(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    post = models.ForeignKey(Posts, on_delete=models.CASCADE, related_name='likes')

@@ -25,7 +25,7 @@
           <h5 class="card-title">{{post.title}}</h5>
           <p class="card-text">{{post.content}}</p>
           <p>
-            <a class="p-10" href="{% url 'like_post' post.id  %}"><i class="fa-solid fa-thumbs-up"></i>Like</a>
+            <a class="p-10" href="{% url 'delails_post_view' post.id  %}"><i class="fa-solid fa-thumbs-up"></i>Like {{post_like | length }}</a>
             <a class="p-10" href="#"><i class="fa-solid fa-thumbs-down"></i>Dislike</a>  
             <a class="p-10" href="{% url 'delails_post_view' post.id %}"><i class="fa-solid fa-comment"></i>Comments {{comments | length}}</a>  
             <a class="p-10" href="{% url 'delails_post_view' post.id %}" class="text-success">View Details</a>

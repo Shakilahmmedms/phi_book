@@ -12,5 +12,5 @@ from django.views.generic import DeleteView,DetailView
 def home(request):
     data = Posts.objects.all()
     comment = Comment.objects.all()
-    return render(request, 'index.html', {'data' : data,'comments':comment})
+    return render(request, 'index.html', {'data' : data,'comments':comment, })
 

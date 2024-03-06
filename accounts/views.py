@@ -7,7 +7,7 @@ from django.contrib.auth.views import LoginView,LogoutView
 from django.views import View
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from posts.models import Posts
+from posts.models import Posts,Comment
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
 from django.contrib.auth.tokens import default_token_generator
@@ -84,7 +84,7 @@ def UserLogout(request):
 @login_required
 def profile(request):
     posts = Posts.objects.filter(user=request.user)
-    # like_history = Like.objects.filter(user=request.user)
+    # comments = Comment.objects.filter(user=request.user)
     return render(request,'profile.html', {'posts':posts})
 
 @login_required

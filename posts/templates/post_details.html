@@ -18,15 +18,22 @@
         </button>
         {% if request.user.is_authenticated %}
         <p><!-- Like Button -->
-          <form action="" method="post">
+          <form action="{% url 'like_post' posts.id %}" method="post">
             {% csrf_token %}
-            <h3>Total Like {{post_like | length}}</h3>
-            <a href="{% url 'like_post' posts.id %}"><i class="fa-solid fa-thumbs-up"></i>Like </a>
-          </form>
-
+            <button type="submit" class="like-button">
+                {% if request.user in posts.likes.all %}
+                    <i class="fa-solid fa-thumbs-up"></i> Unlike
+                {% else %}
+                    <i class="fa-solid fa-thumbs-up"></i> Like
+                {% endif %}
+                {{ posts.likes.count }}
+            </button>
+        </form>
+       
+        </p>
+        <p>   
           <a class="p-10" href="#"><i class="fa-solid fa-thumbs-down"></i>Dislike</a>  
         </p>
-        <p></p>
         {% endif %}
       </p>
     </div>
