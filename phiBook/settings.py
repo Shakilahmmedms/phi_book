@@ -27,7 +27,8 @@ SECRET_KEY = 'django-insecure-3b#h5zpgz@9!oz5-s=yi%38!y8%^y1yt*7$30($_t_(m$us(c%
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"] # this is necessary 
+CSRF_TRUSTED_ORIGINS = ['https://public-health.onrender.com','https://*.127.0.0.1'] 
 
 
 
