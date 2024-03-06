@@ -86,19 +86,19 @@ WSGI_APPLICATION = 'phiBook.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
 DATABASES = {
-    'default': dj_database_url.config(
-        # Replace this value with your local database's connection string.
-        default='postgres://library_management_n1tq_user:mIqU2wGxqB2JFyxhBcAfg3vwqASBA8ec@dpg-cnd7epda73kc73b67q3g-a.oregon-postgres.render.com/library_management_n1tq',
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
+
+# DATABASES = {
+#     'default': dj_database_url.config(
+#         # Replace this value with your local database's connection string.
+#         default='postgres://library_management_n1tq_user:mIqU2wGxqB2JFyxhBcAfg3vwqASBA8ec@dpg-cnd7epda73kc73b67q3g-a.oregon-postgres.render.com/library_management_n1tq',
+#     )
+# }
 
 
 # Password validation
