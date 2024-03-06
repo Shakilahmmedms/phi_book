@@ -7,7 +7,7 @@
 <div class="col-sm-12 mb-3 mb-sm-0">
   <div class="card mx-2 my-2">
     <div class="card-body">
-      <img src="{{post.image.url}}" class="card-img-top w-25" alt="picture" />
+      <img src="{{posts.image.url}}" class="card-img-top w-25" alt="picture" />
       <h1 class="card-title font-bold">{{posts.title}}</h1>
       <p class="card-text">{{posts.content}}</p>
 
@@ -17,7 +17,13 @@
           {{posts.user}}
         </button>
         {% if request.user.is_authenticated %}
-        <p><a class="p-10" href="#"><i class="fa-solid fa-thumbs-up"></i>Like</a>
+        <p><!-- Like Button -->
+          <form action="" method="post">
+            {% csrf_token %}
+            <h3>Total Like {{post_like | length}}</h3>
+            <a href="{% url 'like_post' posts.id %}"><i class="fa-solid fa-thumbs-up"></i>Like </a>
+          </form>
+
           <a class="p-10" href="#"><i class="fa-solid fa-thumbs-down"></i>Dislike</a>  
         </p>
         <p></p>

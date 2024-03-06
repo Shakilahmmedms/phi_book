@@ -1,19 +1,19 @@
 from django.shortcuts import render, redirect
 from django.views.generic import FormView,CreateView
-from .forms import RegistrationForm
+from .forms import RegistrationForm,changUserData
 from django.contrib.auth import login,logout
 from django.urls import reverse_lazy
 from django.contrib.auth.views import LoginView,LogoutView
 from django.views import View
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from posts.models import Posts,Like
+from posts.models import Posts
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
 from django.contrib.auth.tokens import default_token_generator
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.utils.encoding import force_bytes
-from .models import UserAccounts
+
 from django.contrib.auth.models import User
 # Create your views here.
 
@@ -54,7 +54,7 @@ class UserSignupView(FormView):
     def form_valid(self, form):
         
         user = form.save()
-
+        print(user)
         login(self.request,user)
         print(user)
         messages.success(
@@ -83,19 +83,19 @@ def UserLogout(request):
 
 @login_required
 def profile(request):
-    posts = Posts.objects.all()
-    like_history = Like.objects.filter(user=request.user)
-    return render(request,'profile.html', {'like_history':like_history,'posts':posts})
+    posts = Posts.objects.filter(user=request.user)
+    # like_history = Like.objects.filter(user=request.user)
+    return render(request,'profile.html', {'posts':posts})
 
-# @login_required
-# def edit_profile(request):
-#     if request.method == 'POST':
-#         profile_form = forms.ChangeUserData(request.POST, instance = request.user)
-#         if profile_form.is_valid():
-#             messages.success(request,'Profile Updated Successfuly')
-#             profile_form.save()
-#             return redirect('profile')
-#     else:   
-#         profile_form = forms.ChangeUserData(instance = request.user)
-#     return render(request,'edit_profile.html',{'form':profile_form })
+@login_required
+def edit_profile(request):
+    if request.method == 'POST':
+        profile_form = changUserData(request.POST, instance = request.user)
+        if profile_form.is_valid():
+            messages.success(request,'Profile Updated Successfuly')
+            profile_form.save()
+            return redirect('profile')
+    else:   
+        profile_form = changUserData(instance = request.user)
+    return render(request,'edit_profile.html',{'form':profile_form })
 

@@ -13,10 +13,10 @@
             <div class="col-sm-3 avatar-container">
                 <img src="https://bootdey.com/img/Content/avatar/avatar6.png" class="img-circle profile-avatar" alt="User avatar">
             </div>
-            <div class="col-sm-12 profile-actions text-right">
+            <!-- <div class="col-sm-12 profile-actions text-right">
                 <button type="button" class="btn btn-success btn-sm"><i class="fa fa-check"></i> Friends</button>
                 <button type="button" class="btn btn-primary btn-sm"><i class="fa fa-envelope"></i> Send Message</button>
-            </div>
+            </div> -->
         </div>
         <div class="content">
     
@@ -28,7 +28,7 @@
                           <li class="list-group-item">
                            
                             <h2>{{request.user.first_name}} {{request.user.last_name}}</h2>
-                           
+                           <h5><a href="{% url 'edit_profile' %}">Edit Your Profile</a></h5>
       
                           </li>
                           <li class="list-group-item">
@@ -47,14 +47,7 @@
                             
                             <!-- User button -->
                         <div class="user-button">
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <button type="button" class="btn btn-primary btn-sm btn-block"><i class="fa fa-envelope"></i> Send Message</button>
-                                </div>
-                                <div class="col-lg-6">
-                                    <button type="button" class="btn btn-default btn-sm btn-block"><i class="fa fa-user"></i> Add as friend</button>
-                                </div>
-                            </div>
+                          
                         </div><!-- End div .user-button -->
                     </div><!-- End div .box-info -->
                     <!-- Begin user profile -->
@@ -62,16 +55,7 @@
                 
                 <div class="col-sm-9">
                     <div class="widget widget-tabbed">
-                        <!-- Nav tab -->
-                        <!-- <ul class="nav nav-tabs nav-justified">
-                          <li class="active"><a href="#my-timeline" data-toggle="tab"><i class="fa fa-pencil"></i> Timeline</a></li>
-                          <li><a href="#about" data-toggle="tab"><i class="fa fa-user"></i> About</a></li>
-                          <li><a href="#user-activities" data-toggle="tab"><i class="fa fa-laptop"></i> Activities</a></li>
-                          <li><a href="#mymessage" data-toggle="tab"><i class="fa fa-envelope"></i> Message</a></li>
-                        </ul> -->
-                        <!-- End nav tab -->
-    
-                        <!-- Tab panes -->
+                       
                         <div class="tab-content">
                             
                             
@@ -84,31 +68,39 @@
                                         <form role="form" class="post-to-timeline">
                                             <textarea class="form-control" style="height: 70px;margin-bottom:10px;" placeholder="Whats on your mind..."></textarea>
                                             <div class="row">
-                                            <div class="col-sm-6">
+                                            <!-- <div class="col-sm-6">
                                                 <a class="btn btn-sm btn-default"><i class="fa fa-camera"></i></a>
                                                 <a class="btn btn-sm btn-default"><i class="fa fa-video-camera"></i></a>
                                                 <a class="btn btn-sm btn-default"><i class="fa fa-map-marker"></i></a>
-                                            </div>
+                                            </div> -->
                                             <div class="col-sm-6 text-right"><a href="{%  url 'add_post' %}" type="submit" class="btn btn-primary">Add Post</a></div>
                                             </div>
                                         </form>
                                         <br><br>
-                                        <ul>
+                                        <ul class="m-10 mt-10">
                                       
                                         {% for post in posts %}
-                                            <li>
-                                                <div class="the-date">
-                                                    {{post.created_on}}
-                                                </div>
-                                                <img src="{{post.image}}" alt="Picture">
+                                            <li class="bg-white pt-2 border-bottom p-2">
+                                               
+                                                <img src="{{post.image.url}}" alt="Picture">
                                                 <h4>{{post.title}}</h4>
                                                 <p>
                                                 {{post.content}}
                                                 </p>
                                                 <p>Posted by {{post.user}}</p>
+                                                <div class="the-date">
+                                                  {{post.created_on}}
+                                              </div>
+                                                <p>
+                                                  <a class="p-10" href="{% url 'like_post' post.id  %}"><i class="fa-solid fa-thumbs-up"></i>Like</a>
+                                                  <a class="p-10" href="#"><i class="fa-solid fa-thumbs-down"></i>Dislike</a>  
+                                                </p>
+                                                <P><a href="#">Edit</a></P>
+                                                
                                             </li>
+                                            
                                             {% endfor %}
-                                      
+                                     
                                         </ul>
                                     </div><!-- End div .the-timeline -->
                                     <!-- End timeline -->

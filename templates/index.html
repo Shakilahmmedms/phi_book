@@ -19,19 +19,19 @@
 {% for post in data %}
     <div class="card mb-10">
         
-        <div class="card-body">
+        <div class="card-body m-28">
         <p>Posted By {{post.user}}</p>
-        <img src="{{ posts.image.url}}" class="card-img-top" alt="pic">
+        <img src="{{ post.image.url }}" class="card-img-top" alt="{{ post.image.url}}">
           <h5 class="card-title">{{post.title}}</h5>
           <p class="card-text">{{post.content}}</p>
           <p>
-            <a class="p-10" href="#"><i class="fa-solid fa-thumbs-up"></i>Like</a>
+            <a class="p-10" href="{% url 'like_post' post.id  %}"><i class="fa-solid fa-thumbs-up"></i>Like</a>
             <a class="p-10" href="#"><i class="fa-solid fa-thumbs-down"></i>Dislike</a>  
-            <a class="p-10" href="{% url 'delails_post_view' post.id %}"><i class="fa-solid fa-comment"></i>Comments</a>  
+            <a class="p-10" href="{% url 'delails_post_view' post.id %}"><i class="fa-solid fa-comment"></i>Comments {{comments | length}}</a>  
             <a class="p-10" href="{% url 'delails_post_view' post.id %}" class="text-success">View Details</a>
         </p>
           <p></p>
-          
+          <!-- <h3 class="p-3">Total Comments :{{comments | length}}</h3> -->
           <p class="card-text"><small class="text-body-secondary">{{post.created_on}}</small></p>
           
         </div>

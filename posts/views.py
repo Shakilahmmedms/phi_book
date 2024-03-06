@@ -1,4 +1,5 @@
 from django.shortcuts import render,redirect
+from django.http import HttpResponse
 from .import forms
 from .import models
 from django.contrib.auth.decorators import login_required
@@ -6,13 +7,16 @@ from django.views.generic import CreateView
 from django.urls import reverse_lazy
 from django.views.generic import UpdateView
 from django.views.generic import DeleteView,DetailView
-
+from django.contrib.auth.models import User
+from .models import  Posts
+from django.shortcuts import get_object_or_404, redirect
 
 # Create your views here.
 @login_required
 def add_post(request):
     if request.method == 'POST':
-        post_form = forms.PostForm(request.POST)
+        post_form = forms.PostForm(request.POST, request.FILES)
+
         if post_form.is_valid():
             new_post = post_form.save(commit=False)  
             new_post.user = request.user 
@@ -24,8 +28,9 @@ def add_post(request):
 
 def detail_post_view(request, id):
     posts = models.Posts.objects.get(id=id)
-    
+   
     if request.method == 'POST':
+        posts.post_like += 1
         comment_form = forms.CommentForm(data=request.POST)
         if comment_form.is_valid():
             new_comment = comment_form.save(commit=False)
@@ -44,18 +49,16 @@ def detail_post_view(request, id):
     return render(request, 'post_details.html', context)
 
 
-# def my_posts(request):
-#     posts = models.Posts.objects.filter(user=request.user)
-#     return render(request, 'profile.html', {'posts': posts})
-
-
-
 def like_post(request, id):
-    post = models.Posts.objects.get(id=id)
-    like, created = models.Like.objects.get_or_create(user=request.user, post=post)
-    if not created:
-        like.delete()
-    return redirect('post_detail', id=id)
+    post = Posts.objects.get(id=id)
+    if request.method == 'POST':
+        if request.user.is_authenticated:
+            post.post_like += 1
+            post.save()
+            return redirect('delails_post_view.html')
+    return render('post_details.html',{'post_like':post} )
+
+
 
 class DetailPostViews(DetailView):
     model = models.Posts
@@ -65,6 +68,7 @@ class DetailPostViews(DetailView):
     def post(self,request, *args, **kwargs):
         comment_form = forms.CommentForm(data = self.request.POST)
         posts = self.get_object()
+       
         if comment_form.is_valid():
             new_comment = comment_form.save(commit = False)
             new_comment.posts = posts
@@ -96,8 +100,56 @@ def edit_post(request,id):
             return redirect('homepage')
     return render(request,'add_post.html', {'form':post_form})
 
+    
+
 @login_required
 def delete_post(request,id):
     post = models.Posts.objects.get(pk =id)
     post.delete()
     return redirect('homepage')
+
+
+
+# @login_required
+# def like_post(request, id):
+#     like = models.Posts.objects.get(id=id)
+#     likes = models.Posts.objects.all()
+#     user = request.user
+#     models.Like.objects.create(user=request.user, like=like.post_like)  
+#     like.post_like += 1
+#     user.save()
+#     like.save()
+#     return render(request, './accounts/profile.html', {'likes': likes})
+
+
+
+
+
+# @login_required
+# def like_post(request, id):
+#     post = get_object_or_404(Posts, id=id)
+#     like, created = .objects.get_or_create(user=request.user, post=post)
+
+#     if created:
+#         post.post_like += 1
+#         post.save()
+#         like.like = 1
+#         like.like_permi = True
+#         like.save()
+#         return redirect('details_post_view', post_id=id)  
+    
+#     return render('post_details.html',{'like': like})
+
+
+# def dislike_post(request, post_id):
+#     post = get_object_or_404(Posts, id=post_id)
+#     like, created = Like.objects.get_or_create(user=request.user, post=post)
+
+#     if created:
+#         post.post_dislike += 1
+#         post.save()
+#         like.dislike = 1
+#         like.dislike_permi = True
+#         like.save()
+#         return redirect('delails_post_view', post_id=post_id)
+#     return render('post_details.html',{'like': like_post})
