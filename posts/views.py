@@ -92,20 +92,49 @@ def delete_post(request,id):
 
 
 
-def like_post(request, id):
-    post = get_object_or_404(Posts, id=id)
-    user = request.user
-
-    # Check if the user has already liked the post
-    if Like.objects.filter(user=user, post=post).exists():
-        # If the user has already liked the post, remove the like
-        Like.objects.filter(user=user, post=post).delete()
+@login_required
+def likeview(request,id,user_id):
+    
+    post_cl = Posts.objects.get(id=id)
+    login_user = User.objects.get(id=request.user.id)
+    if Like.objects.filter(post=post_cl,user=login_user).exists():
+        
+        
+        isExist = Like.objects.get(post=post_cl,user=login_user)
+        if isExist.like_permi == True:
+            # messages.info(request,'You Already Like this post')
+            isExist.delete()
+            # print(isExist.post.caption)
+            # print(login_user.username)
+            return redirect('home')
+        
+        else: 
+            isExist = Like.objects.get(post=post_cl,user=login_user)
+            if isExist.dislike_permi == True:
+                # print(isExist.post.caption)
+                isExist.delete()
+                noObject = Like.objects.create(
+                    user = login_user,
+                    post = post_cl,
+                    like = 1,
+                    like_permi = True
+                )
+                noObject.save()
+                
+            return redirect('home')
+            # messages.info(request,'You Already Dislike this post')
+            # return redirect('homepage')
+    
+    
+        
     else:
-        # If the user has not liked the post, add a like
-        Like.objects.create(user=user, post=post)
+        noObject = Like.objects.create(
+            user = login_user,
+            post = post_cl,
+            like = 1,
+            like_permi = True
+        )
+        noObject.save()
+        return redirect('home')
 
-    # Update the like count for the post
-    post.post_like = post.likes.count()
-    post.save()
-
-    return redirect('delails_post_view', id=id)
+        

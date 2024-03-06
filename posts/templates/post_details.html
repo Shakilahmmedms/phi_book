@@ -18,7 +18,7 @@
         </button>
         {% if request.user.is_authenticated %}
         <p><!-- Like Button -->
-          <form action="{% url 'like_post' posts.id %}" method="post">
+          <form action="{% url 'like' posts.id posts.user.id %}" method="post">
             {% csrf_token %}
             <button type="submit" class="like-button">
                 {% if request.user in posts.likes.all %}
