@@ -1,42 +1,445 @@
 {% extends 'base.html' %}
 
 {% load static %}
+{% block style %}
+<link href="https://cdn.jsdelivr.net/npm/swiffy-slider@1.6.0/dist/css/swiffy-slider.min.css" rel="stylesheet" crossorigin="anonymous">
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link rel="stylesheet" href="{% static 'style.css' %}">
+{% endblock %}
+
 {% block content %}
-<div class="container mb-5 mt-5">
-    <div class="row d-flex flex-wrap justify-content-center align-items-center">
-        <div class="col-md-5">
-            <h1 class="fw-bold" style="font-size: 50px;">WelCome To <br>PhiBook</h1>
-        </div>
-        <div class="col-md-5">
-           <img src="{% static 'linkedin.svg' %}" alt="pic">
-        </div>
-    </div>
+<div class="mb-10 swiffy-slider slider-nav-visible slider-nav-animation slider-nav-animation-slow slider-item-first-visible" id="animatedText">
+
+  <ul class="slider-container" id="container1">
+      <li id="slide1" class="slide-visible">
+          <div>
+              <img src="{% static '1.jpg' %}" alt="..." loading="lazy" class="w-100" style="height: 700px !important;">
+              <h1 class="display-1 text-black custom-animated-text position-absolute top-50 start-50 translate-middle fs-1">Inspire Connect Share <br>
+                <button href="{% url 'register' %}" style="padding: 20px;border: 1px solid gray;border-radius: 100px; background-color: #EDBAA0;">Join Now</button>
+              </h1>
+        
+          </div>
+
+      </li>
+      <li id="slide2">
+          <div>
+              <img src="{% static '2.jpg' %}" alt="..." loading="lazy" class="w-100" style="height: 700px !important;">
+              <h1 class="display-1 text-black custom-animated-text position-absolute top-50 start-50 translate-middle fs-1">Where Stories Unite, Voices Ignite
+                <button href="{% url 'register' %}" style="padding: 20px;border: 1px solid gray;border-radius: 100px; background-color: #EDBAA0;">Join Now</button>
+              </h1>
+          </div>
+      </li>
+      <li id="slide3">
+          <div>
+              <img src="{% static '3.jpg' %}" alt="..." loading="lazy" class="w-100" style="height: 700px !important;">
+              <h1 class="display-1 text-black custom-animated-text position-absolute top-50 start-50 translate-middle fs-1">Empowering Communities, One Post at a Time.
+                <button  href="{% url 'register' %}" style="padding: 20px;border: 1px solid gray;border-radius: 100px; background-color: #EDBAA0;">Join Now</button>
+              </h1>
+          </div>
+      </li>
+      <li id="slide4">
+          <div>
+              <img src="{% static '1.jpg' %}" alt="..." loading="lazy" class="w-100" style="height: 700px !important;">
+              <h1 class="display-1 text-black custom-animated-text position-absolute top-50 start-50 translate-middle fs-1">Igniting Conversations, Sparking Change.
+                <button href="{% url 'register' %}" style="padding: 20px;border: 1px solid gray;border-radius: 100px; background-color: #EDBAA0;">Join Now</button>
+              </h1>
+          </div>
+      </li>
+      <li id="slide5">
+          <div>
+              <img src="{% static '1.jpg' %}" alt="..." loading="lazy" class="w-100 " style="height: 700px !important;">
+              <h1 class="display-1 text-black custom-animated-text position-absolute top-50 start-50 translate-middle fs-1">Your Platform for Empowerment and Expression.
+                <button href="{% url 'register' %}" style="padding: 20px;border: 1px solid gray;border-radius: 100px; background-color: #EDBAA0;">Join Now</button>
+              </h1>
+          </div>
+      </li>
+  </ul>
+
+  <button type="button" class="slider-nav" aria-label="Go to previous"></button>
+  <button type="button" class="slider-nav slider-nav-next" aria-label="Go to next"></button>
+
+  <div class="slider-indicators">
+      <button aria-label="Go to slide" class="active"></button>
+      <button aria-label="Go to slide"></button>
+      <button aria-label="Go to slide"></button>
+      <button aria-label="Go to slide"></button>
+      <button aria-label="Go to slide"></button>
+  </div>
+
+ 
 </div>
 
+<!-- viarl  -->
+<div class="container mt-52">
 
- <div class="container">
-    <h1>Our Soical Posts</h1>
-{% for post in data %}
-    <div class="card mb-10">
-        
-        <div class="card-body m-28">
-        <p>Posted By {{post.user}}</p>
-        <img src="{{ post.image.url }}" class="card-img-top" alt="{{ post.image.url}}">
-          <h5 class="card-title">{{post.title}}</h5>
-          <p class="card-text">{{post.content}}</p>
-          <p>
-            <a class="p-10" href="{% url 'delails_post_view' post.id  %}"><i class="fa-solid fa-thumbs-up"></i>Like {{post_like | length }}</a>
-            <a class="p-10" href="#"><i class="fa-solid fa-thumbs-down"></i>Dislike</a>  
-            <a class="p-10" href="{% url 'delails_post_view' post.id %}"><i class="fa-solid fa-comment"></i>Comments {{comments | length}}</a>  
-            <a class="p-10" href="{% url 'delails_post_view' post.id %}" class="text-success">View Details</a>
-        </p>
-          <p></p>
-          <!-- <h3 class="p-3">Total Comments :{{comments | length}}</h3> -->
-          <p class="card-text"><small class="text-body-secondary">{{post.created_on}}</small></p>
-          
+  <div class="row justify-content-center align-items-center">
+    <div class="col-md-6">
+      <h1 class="font-bold">Viral Vibes</h1>
+      <h5>Dive into the Hottest Trends and Viral Content Across the Globe</h5>
+    </div>
+    <div class="col-md-6">
+      <img style="border-radius: 20px;" src="{% static 'logo_2.jpeg' %}" alt="">
+    </div>
+  </div>
+
+</div>
+
+<!-- unlesh your social site -->
+<div class="container text-center" style="background-color: white; padding: 150px 100px;margin-top: 100px ; border-radius: 20px;">
+  <div>
+    <h1 class="font-bold">
+      Unleash Your Social Side
+    </h1>
+    <p>Welcome to Phibook, where socializing reaches new heights of excitement and connection. Dive into a world of endless possibilities and vibrant interactions.
+
+      Experience the thrill of sharing, connecting, and engaging with friends and like-minded individuals in ways you've never imagined.
+      
+      Join Phibook today and let your social journey begin!</p>
+  </div>
+</div>
+
+<!-- why choise phibook  -->
+<h1 style="text-align: center;font-weight: 900;" class="mt-40">Why Choose Phibook?</h1>
+<h5 style="text-align: center;">Join the revolution of social media with Phibook's unique features.</h5>
+<div class="container swiffy-slider slider-item-show3 slider-item-reveal slider-nav-dark slider-nav-outside-expand">
+  <ul class="slider-container py-4" id="slider2">
+      <li class="">
+          <div class="card shadow h-100"  style="border-radius: 20px;">
+              <div class="ratio ratio-1x1" >
+                  <img  src="{% static 'download (1).jpeg' %}" class="card-img-top" loading="lazy" alt="..." style="border-radius: 20px;">
+              </div>
+              <div class="card-body d-flex flex-column flex-md-row">
+                  <div class="flex-grow-1">
+                      <h3 class="font-bold">Trendy Discovery</h3>
+                      <p class="card-text font-bold">Stay ahead with trending topics and discover what's hot!</p>
+                      <button style="background-color: #C0D6DF;border-radius: 100px;  padding: 1.25rem 2rem; color:black; "> Join Now</button>
+                  </div>
+                  
+              </div>
+              
+          </div>
+      </li>
+      <li>
+          <div class="card shadow h-100" style="border-radius: 20px;">
+              <div class="ratio ratio-1x1">
+                  <img src="{% static 'download (2).jpeg' %}" style="border-radius: 20px;" class="card-img-top" loading="lazy" alt="...">
+              </div>
+              <div class="card-body d-flex flex-column flex-md-row">
+                  <div class="flex-grow-1">
+                    <h3 class="font-bold">Trendy Discovery</h3>
+                    <p class="card-text font-bold">Stay ahead with trending topics and discover what's hot!</p>
+                    <button style="background-color: #C0D6DF;border-radius: 100px;  padding: 1.25rem 2rem; color:black; "> Join Now</button>
+                  </div>
+                 
+              </div>
+          </div>
+      </li>
+      <li>
+          <div class="card shadow h-100" style="border-radius: 20px;">
+              <div class="ratio ratio-1x1">
+                  <img src="{% static 'download (3).jpeg' %}" style="border-radius: 20px;" class="card-img-top" loading="lazy" alt="...">
+              </div>
+              <div class="card-body d-flex flex-column flex-md-row">
+                  <div class="flex-grow-1">
+                    <h3 class="font-bold">Trendy Discovery</h3>
+
+                    <p class="card-text font-bold">Stay ahead with trending topics and discover what's hot!</p>
+                    <button style="background-color: #C0D6DF;border-radius: 100px;  padding: 1.25rem 2rem; color:black; "> Join Now</button>
+                  </div>
+                  
+              </div>
+          </div>
+      </li>
+      <li>
+          <div class="card shadow h-100" style="border-radius: 20px;">
+              <div class="ratio ratio-1x1">
+                  <img src="{% static 'download (4).jpeg' %}" style="border-radius: 20px;" class="card-img-top" loading="lazy" alt="...">
+              </div>
+              <div class="card-body d-flex flex-column flex-md-row">
+                  <div class="flex-grow-1">
+                    <h3 class="font-bold">Trendy Discovery</h3>
+
+                    <p class="card-text font-bold">Stay ahead with trending topics and discover what's hot!</p>
+                    <button style="background-color: #C0D6DF;border-radius: 100px;  padding: 1.25rem 2rem; color:black; "> Join Now</button>
+                  </div>
+                 
+              </div>
+          </div>
+      </li>
+      <li>
+          <div class="card shadow h-100" style="border-radius: 20px;">
+              <div class="ratio ratio-1x1">
+                  <img src="{% static 'download (5).jpeg' %}" style="border-radius: 20px;" class="card-img-top" loading="lazy" alt="...">
+              </div>
+              <div class="card-body d-flex flex-column flex-md-row">
+                  <div class="flex-grow-1">
+                    <h3 class="font-bold">Trendy Discovery</h3>
+
+                    <p class="card-text font-bold">Stay ahead with trending topics and discover what's hot!</p>
+                    <button style="background-color: #C0D6DF;border-radius: 100px;  padding: 1.25rem 2rem; color:black; "> Join Now</button>
+                  </div>
+              </div>
+          </div>
+      </li>
+      <li>
+          <div class="card shadow h-100" style="border-radius: 20px;">
+              <div class="ratio ratio-1x1">
+                  <img src="{% static 'download.jpeg' %}" style="border-radius: 20px;" class="card-img-top" loading="lazy" alt="...">
+              </div>
+              <div class="card-body d-flex flex-column flex-md-row">
+                  <div class="flex-grow-1">
+                    <h3 class="font-bold">Trendy Discovery</h3>
+
+                    <p class="card-text font-bold">Stay ahead with trending topics and discover what's hot!</p>
+                    <button style="background-color: #C0D6DF;border-radius: 100px;  padding: 1.25rem 2rem; color:black; "> Join Now</button>
+                  </div>
+              </div>
+          </div>
+      </li>
+      <li>
+          <div class="card shadow h-100" style="border-radius: 20px;">
+              <div class="ratio ratio-1x1">
+                  <img src="{% static 'download (1).jpeg' %}" style="border-radius: 20px;" class="card-img-top" loading="lazy" alt="...">
+              </div>
+              <div class="card-body d-flex flex-column flex-md-row">
+                  <div class="flex-grow-1">
+                    <h3 class="font-bold">Trendy Discovery</h3>
+
+                    <p class="card-text font-bold">Stay ahead with trending topics and discover what's hot!</p>
+                    <button style="background-color: #C0D6DF;border-radius: 100px;  padding: 1.25rem 2rem; color:black; "> Join Now</button>
+                  </div>
+                  
+              </div>
+          </div>
+      </li>
+      <li>
+          <div class="card shadow h-100" style="border-radius: 20px;">
+              <div class="ratio ratio-1x1">
+                  <img src="{% static 'download (2).jpeg' %}" style="border-radius: 20px;" class="card-img-top" loading="lazy" alt="...">
+              </div>
+              <div class="card-body d-flex flex-column flex-md-row">
+                  <div class="flex-grow-1">
+                    <h3 class="font-bold">Trendy Discovery</h3>
+
+                    <p class="card-text font-bold">Stay ahead with trending topics and discover what's hot!</p>
+                    <button style="background-color: #C0D6DF;border-radius: 100px;  padding: 1.25rem 2rem; color:black; "> Join Now</button>
+                  </div>
+                  
+              </div>
+          </div>
+      </li>
+      <li>
+          <div class="card shadow h-100" style="border-radius: 20px;">
+              <div class="ratio ratio-1x1">
+                  <img src="{% static 'download.jpeg' %}" style="border-radius: 20px;" class="card-img-top" loading="lazy" alt="...">
+              </div>
+              <div class="card-body d-flex flex-column flex-md-row">
+                  <div class="flex-grow-1">
+                    <h3 class="font-bold">Trendy Discovery</h3>
+
+                    <p class="card-text font-bold">Stay ahead with trending topics and discover what's hot!</p>
+                    <button style="background-color: #C0D6DF;border-radius: 100px;  padding: 1.25rem 2rem; color:black; "> Join Now</button>
+                  </div>
+                 
+              </div>
+          </div>
+      </li>
+  </ul>
+
+  <button type="button" class="slider-nav" aria-label="Go to previous"></button>
+  <button type="button" class="slider-nav slider-nav-next" aria-label="Go to next"></button>
+</div>
+
+<!-- why choise phibook  -->
+
+<!-- meet us  -->
+
+<div class="container mt-44 mb-44">
+  <h1 class="font-bold text-center mb-5 ">Meet Us</h1>
+  <div class="row">
+    <div class="col-md-3">
+      <div class="card" style="width: 18rem;">
+        <img  src=" {% static 'max.jpeg' %}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h2>Max</h2>
+          <p class="card-text">Chief Experience Officer</p>
         </div>
-        
       </div>
-{% endfor %}
- </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card" style="width: 18rem;">
+        <img src=" {% static 'aria.jpeg' %}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h2>Aria</h2>
+          <p class="card-text">Community Connector</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card" style="width: 18rem;">
+        <img src=" {% static 'leo.jpeg' %}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h2>Leo</h2>
+          <p class="card-text">Innovation Guru</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card" style="width: 18rem;">
+        <img src=" {% static 'zoe.jpeg' %}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h2>Zoe</h2>
+          <p class="card-text">Creative Visionary</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- social link  -->
+<section class="container pt-3 mb-10 mt-28">
+  <h2 class="h3 block-title text-center font-bold">What we do<small>Whatever we do, we do with your end user in mind </small></h2>
+  <div class="row pt-5 mt-30">
+      <div class="col-lg-4 col-sm-6 mb-30 pb-5">
+          <a class="card" href="#">
+              <div class="box-shadow bg-white rounded-circle mx-auto text-center" style="width: 90px; height: 90px; margin-top: -45px;"> <i class="fab fa-facebook-f fa-3x head-icon"></i></div>
+              <div class="card-body text-center">
+                  <h3 class="card-title pt-1">Facebook</h3>
+                  <p class="card-text text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</p><span class="text-sm text-uppercase font-weight-bold">Learn More&nbsp;<i class="fe-icon-arrow-right"></i></span>
+              </div>
+          </a>
+      </div>
+      <div class="col-lg-4 col-sm-6 mb-30 pb-5">
+          <a class="card" href="#">
+              <div class="box-shadow bg-white rounded-circle mx-auto text-center" style="width: 90px; height: 90px; margin-top: -45px;"><i class="fab fa-instagram fa-3x head-icon"></i></div>
+              <div class="card-body text-center">
+                  <h3 class="card-title pt-1">Instagram</h3>
+                  <p class="card-text text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</p><span class="text-sm text-uppercase font-weight-bold">Learn More&nbsp;<i class="fe-icon-arrow-right"></i></span>
+              </div>
+          </a>
+      </div>
+      <div class="col-lg-4 col-sm-6 mb-30 pb-5">
+          <a class="card" href="#">
+              <div class="box-shadow bg-white rounded-circle mx-auto text-center" style="width: 90px; height: 90px; margin-top: -45px;"><i class="fab fa-twitter fa-3x head-icon"></i></div>
+              <div class="card-body text-center">
+                  <h3 class="card-title pt-1">Twitter</h3>
+                  <p class="card-text text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</p><span class="text-sm text-uppercase font-weight-bold">Learn More&nbsp;<i class="fe-icon-arrow-right"></i></span>
+              </div>
+          </a>
+      </div>
+      <div class="col-lg-4 col-sm-6 mb-30 pb-5">
+          <a class="card" href="#">
+              <div class="box-shadow bg-white rounded-circle mx-auto text-center" style="width: 90px; height: 90px; margin-top: -45px;"><i class="fab fa-linkedin-in fa-3x head-icon"></i></div>
+              <div class="card-body text-center">
+                  <h3 class="card-title pt-1">LinkedIn</h3>
+                  <p class="card-text text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</p><span class="text-sm text-uppercase font-weight-bold">Learn More&nbsp;<i class="fe-icon-arrow-right"></i></span>
+              </div>
+          </a>
+      </div>
+      <div class="col-lg-4 col-sm-6 mb-30 pb-5">
+          <a class="card" href="#">
+              <div class="box-shadow bg-white rounded-circle mx-auto text-center" style="width: 90px; height: 90px; margin-top: -45px;"><i class="fab fa-tiktok fa-3x head-icon"></i></div>
+              <div class="card-body text-center">
+                  <h3 class="card-title pt-1">TikTok</h3>
+                  <p class="card-text text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</p><span class="text-sm text-uppercase font-weight-bold">Learn More&nbsp;<i class="fe-icon-arrow-right"></i></span>
+              </div>
+          </a>
+      </div>
+      <div class="col-lg-4 col-sm-6 mb-30 pb-5">
+          <a class="card" href="#">
+              <div class="box-shadow bg-white rounded-circle mx-auto text-center" style="width: 90px; height: 90px; margin-top: -45px;"><i class="fab fa-github fa-3x head-icon"></i></div>
+              <div class="card-body text-center">
+                  <h3 class="card-title pt-1">GitHub</h3>
+                  <p class="card-text text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</p><span class="text-sm text-uppercase font-weight-bold">Learn More&nbsp;<i class="fe-icon-arrow-right"></i></span>
+              </div>
+          </a>
+      </div>
+  </div>
+</section>
+
+<!-- FAQ  -->
+<h1 style="text-align: center; font-weight: bold;margin-top: 80px; margin-bottom: 30px;">Curious Minds</h1>
+<div class="accordion m-20" id="accordionExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        How do I join Phibook?
+      </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse " data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <strong>Joining Phibook is as easy as clicking a button! Simply create an account and start connecting with friends.
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        Can I customize my profile?
+      </button>
+    </h2>
+    <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+        Is Phibook free to use?
+      </button>
+    </h2>
+    <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+        Can I share my favorite moments?
+      </button>
+    </h2>
+    <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- contact us -->
+
+<section id="contact" class="mb-32 mt-5">
+  <div class="container">
+  
+	
+	<div class="row">
+	  <div class="col-md-7">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d3736489.7218514383!2d90.21589792292741!3d23.857125486636733!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sbd!4v1506502314230" width="100%" height="315" frameborder="0" style="border:0" allowfullscreen></iframe>
+      </div>
+
+      <div class="col-md-5">
+          <h1><strong>Connect with Us</strong></h1>
+          <p class="font-bold">
+            <br>Phone: 1-800-PHIBOOK <br>
+            Email: info@phibook.com <br>
+            Address: Dhaka Bangladesh <br>
+            Working Hours: Mon-Fri: 9am-6pm</p>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+{% endblock %}
+
+{% block script %}
+<script src="https://cdn.jsdelivr.net/npm/swiffy-slider@1.6.0/dist/js/swiffy-slider.min.js" crossorigin="anonymous" defer></script>
+
+
 {% endblock %}

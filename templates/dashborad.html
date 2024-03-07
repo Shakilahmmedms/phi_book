@@ -1,0 +1,154 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'dashborad.css' %}">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+
+<div class="row w-100">
+    <div class="col-md-3">
+        <div class="container">
+            
+                <div class=" mt-10">
+                    <div class="profile-card">
+                        <img src="{% static 'avatar1.png' %}" alt="user" class="profile-photo">
+                        <h5><a href="{% url 'profile' %}" class="text-white">{{request.user.first_name}} {{request.user.last_name}}</a></h5>
+                        <a href="#" class="text-white"><i class="fa fa-user"></i> 1,299 followers</a>
+                    </div><!--profile card ends-->
+                    <ul class="nav-news-feed">
+                      <li><i class="fa fa-list-alt icon1"></i><div><a href="{% url 'profile' %}">My Profile</a></div></li>
+                      <li><i class="fa fa-list-alt icon1"></i><div><a href="{% url 'profile' %}">My Newsfeed</a></div></li>
+                      <li><i class="fa fa-users icon2"></i><div><a href="#">People Nearby</a></div></li>
+                      <li><i class="fa fa-user icon3"></i><div><a href="#">Friends</a></div></li>
+                      <li><i class="fa fa-comments icon4"></i><div><a href="#">Messages</a></div></li>
+                      <li><i class="fa fa-picture-o icon5"></i><div><a href="#">Images</a></div></li>
+                     
+                    </ul>
+                    
+                </div>
+          
+        </div>
+    </div>
+    <div class="col-md-6 ">
+        
+            <h1>Our Soical Posts</h1>
+          
+            {% for post in data %}
+            <div class="card mb-10 ">
+                
+                <div class="card-body">
+                <p>Posted By {{post.user}}</p>
+                <img  src="{{ post.image.url }}" class="card-img-top w-100 mb-10" alt="{{ post.image.url}}">
+                  <h5 class="card-title">{{post.title}}</h5>
+                  <p class="card-text">{{post.content}}</p>
+                  <p>
+                    <a class="p-10" href="{% url 'delails_post_view' post.id  %}"><i class="fa-solid fa-thumbs-up"></i>Like {{post_like | length }}</a>
+                    <a class="p-10" href="#"><i class="fa-solid fa-thumbs-down"></i>Dislike</a>  
+                    <a class="p-10" href="{% url 'delails_post_view' post.id %}"><i class="fa-solid fa-comment"></i>Comments {{comments | length}}</a>  
+                    <a class="p-10" href="{% url 'delails_post_view' post.id %}" class="text-success">View Details</a>
+                </p>
+                  <p></p>
+                  <!-- <h3 class="p-3">Total Comments :{{comments | length}}</h3> -->
+                  <p class="card-text"><small class="text-body-secondary">{{post.created_on}}</small></p>
+                  
+                </div>
+                
+              </div>
+        {% endfor %}
+     
+    </div>
+    <div class="col-md-3">
+
+        <section class="container ng-scope ng-fadeInLeftShort" >
+            <!-- uiView:  --><div class="ng-fadeInLeftShort ng-scope" >
+          
+            <div class="container-fluid ng-scope">
+             
+              
+                <!-- Right column-->
+                <div class="">
+                  <div class="card">
+                    <h5 class="card-heading">
+                        Contacts
+                    </h5>
+                    <div class="mda-list">
+                      <div class="mda-list-item"><img src="{% static 'avatar1.png' %}" alt="List user" class="mda-list-item-img">
+                        <div class="mda-list-item-text mda-2-line">
+                          <h3><a href="#">Eric Graves</a></h3>
+                          <div class="text-muted text-ellipsis">Ut ac nisi id mauris</div>
+                        </div>
+                      </div>
+                      <div class="mda-list-item"><img src="{% static 'avatar1.png' %}" alt="List user" class="mda-list-item-img">
+                        <div class="mda-list-item-text mda-2-line">
+                          <h3><a href="#">Jessie Cox</a></h3>
+                          <div class="text-muted text-ellipsis">Sed lacus nisl luctus</div>
+                        </div>
+                      </div>
+                      <div class="mda-list-item"><img src="{% static 'avatar1.png' %}" alt="List user" class="mda-list-item-img">
+                        <div class="mda-list-item-text mda-2-line">
+                          <h3><a href="#">Marie Hall</a></h3>
+                          <div class="text-muted text-ellipsis">Donec congue sagittis mi</div>
+                        </div>
+                      </div>
+                      <div class="mda-list-item"><img src="{% static 'avatar1.png' %}" alt="List user" class="mda-list-item-img">
+                        <div class="mda-list-item-text mda-2-line">
+                          <h3><a href="#">Guy Carpenter</a></h3>
+                          <div class="text-muted text-ellipsis">Donec convallis arcu sit</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card-body pv0 text-right"><a href="" class="btn btn-flat btn-info">View all</a></div>
+                    <div class="card-divider"></div>
+                    <h5 class="card-heading">Activity</h5>
+                    <div class="card-body pb0">
+                      <p class="pull-left mr"><em class="ion-record text-info"></em></p>
+                      <div class="oh">
+                        <p><strong class="mr-sm">Added</strong><span class="mr-sm">a new issue</span><a href="">#5478</a></p>
+                        <div class="clearfix">
+                          <div class="pull-left text-muted"><em class="ion-android-time mr-sm"></em><span>an hour ago</span></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card-body pb0">
+                      <p class="pull-left mr"><em class="ion-record text-danger"></em></p>
+                      <div class="oh">
+                        <p><strong class="mr-sm">Commented</strong><span class="mr-sm"> on the project</span><a href="">Material</a></p>
+                        <p class="bl pl"><i>That's awesome!</i></p>
+                        <div class="clearfix">
+                          <div class="pull-left text-muted"><em class="ion-android-time mr-sm"></em><span>2 hours ago</span></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card-body pb0">
+                      <p class="pull-left mr"><em class="ion-record text-success"></em></p>
+                      <div class="oh">
+                        <p><strong class="mr-sm">Completed</strong><span> all tasks asigned this week</span></p>
+                        <div class="clearfix">
+                          <div class="pull-left text-muted"><em class="ion-android-time mr-sm"></em><span>3 hours ago</span></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card-body pb0">
+                      <p class="pull-left mr"><em class="ion-record text-info"></em></p>
+                      <div class="oh">
+                        <p><strong class="mr-sm">Published</strong><span class="mr-sm"> new photos on the album</span><a href="">WorldTrip</a></p>
+                        <p><a href=""><img src="https://www.bootdey.com/image/200x200" alt="Pic" class="mr-sm thumb48"></a>
+                        <a href=""><img src="https://www.bootdey.com/image/200x200" alt="Pic" class="mr-sm thumb48"></a>
+                        <a href=""><img src="https://www.bootdey.com/image/200x200" alt="Pic" class="mr-sm thumb48"></a></p>
+                        <div class="clearfix">
+                          <div class="pull-left text-muted"><em class="ion-android-time mr-sm"></em><span>4 hours ago</span></div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                  </div>
+             
+              </div>
+            </div></div></section>
+    </div>
+</div>
+{% endblock %}

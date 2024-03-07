@@ -7,10 +7,11 @@ from django.urls import reverse_lazy
 from django.views.generic import UpdateView
 from django.views.generic import DeleteView,DetailView
 
-
-
 def home(request):
+    return render(request, 'index.html')
+
+def dashboard(request):
     data = Posts.objects.all()
     comment = Comment.objects.all()
-    return render(request, 'index.html', {'data' : data,'comments':comment, })
+    return render(request, 'dashborad.html', {'data' : data,'comments':comment, })
 

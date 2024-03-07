@@ -92,49 +92,6 @@ def delete_post(request,id):
 
 
 
-@login_required
-def likeview(request,id,user_id):
-    
-    post_cl = Posts.objects.get(id=id)
-    login_user = User.objects.get(id=request.user.id)
-    if Like.objects.filter(post=post_cl,user=login_user).exists():
-        
-        
-        isExist = Like.objects.get(post=post_cl,user=login_user)
-        if isExist.like_permi == True:
-            # messages.info(request,'You Already Like this post')
-            isExist.delete()
-            # print(isExist.post.caption)
-            # print(login_user.username)
-            return redirect('home')
-        
-        else: 
-            isExist = Like.objects.get(post=post_cl,user=login_user)
-            if isExist.dislike_permi == True:
-                # print(isExist.post.caption)
-                isExist.delete()
-                noObject = Like.objects.create(
-                    user = login_user,
-                    post = post_cl,
-                    like = 1,
-                    like_permi = True
-                )
-                noObject.save()
-                
-            return redirect('home')
-            # messages.info(request,'You Already Dislike this post')
-            # return redirect('homepage')
-    
-    
-        
-    else:
-        noObject = Like.objects.create(
-            user = login_user,
-            post = post_cl,
-            like = 1,
-            like_permi = True
-        )
-        noObject.save()
-        return redirect('home')
+
 
         

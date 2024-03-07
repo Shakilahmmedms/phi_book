@@ -11,12 +11,9 @@
     <div class="content-page">
         <div class="profile-banner" style="background:url(https://bootdey.com/img/Content/bg1.jpg);">
             <div class="col-sm-3 avatar-container">
-                <img src="https://bootdey.com/img/Content/avatar/avatar6.png" class="img-circle profile-avatar" alt="User avatar">
+                <img src="{% static 'avatar.png' %}" class="img-circle profile-avatar" alt="User avatar">
             </div>
-            <!-- <div class="col-sm-12 profile-actions text-right">
-                <button type="button" class="btn btn-success btn-sm"><i class="fa fa-check"></i> Friends</button>
-                <button type="button" class="btn btn-primary btn-sm"><i class="fa fa-envelope"></i> Send Message</button>
-            </div> -->
+           
         </div>
         <div class="content">
     
@@ -32,15 +29,15 @@
       
                           </li>
                           <li class="list-group-item">
-                            <span class="badge">1,245</span>
+                       
                             Followers
                           </li>
                           <li class="list-group-item">
-                            <span class="badge">245</span>
+                        
                             Following
                           </li>
                           <li class="list-group-item">
-                            <span class="badge">1,245</span>
+                         
                             Tweets
                           </li>
                         </ul>
@@ -82,7 +79,7 @@
                                         {% for post in posts %}
                                             <li class="bg-white pt-2 border-bottom p-2">
                                                
-                                                <img src="{{post.image.url}}" alt="Picture">
+                                                <img class="w-100" src="{{post.image.url}}" alt="Picture">
                                                 <h4>{{post.title}}</h4>
                                                 <p>
                                                 {{post.content}}
@@ -92,7 +89,7 @@
                                                   {{post.created_on}}
                                               </div>
                                                 <p>
-                                                  <a class="p-10" href="{% url 'like_post' post.id  %}"><i class="fa-solid fa-thumbs-up"></i>Like</a>
+                                                  <a class="p-10" href="#"><i class="fa-solid fa-thumbs-up"></i>Like</a>
                                                   <a class="p-10" href="#"><i class="fa-solid fa-thumbs-down"></i>Dislike</a>
                                                   <a class="p-10" href="{% url 'delails_post_view' post.id %}"><i class="fa-solid fa-comment"></i>Comments {{comments | length}}</a>   
                                                 </p>

@@ -31,7 +31,7 @@ body{
   padding-left: 0;
   font-size: 20px;
   padding-right: 50px;
-  font-family: 'Raleway', sans-serif;
+  font-family:  'Varela Round', sans-serif;
 }
 .navbar .navbar-brand b {
   font-weight: bold;
@@ -112,4 +112,27 @@ body{
   .input-group {
       width: 100%;
   }
+}
+/* caursel */
+ /*The starting point of text to animate*/
+      
+ #animatedText.slider-nav-animation .slider-container .custom-animated-text {
+  opacity: 0.25;
+  transform: scale(.25);
+  transition: opacity 1.5s ease-in-out, transform .95s ease-in-out;
+  transition-delay: .5s;
+  text-align: center;
+}
+/*The end of animation*/
+
+#animatedText.slider-nav-animation .slider-container .slide-visible .custom-animated-text {
+  opacity: 1;
+  transform: none;
+}
+
+/* why */
+#join_now{
+  background-color: #C0D6DF;
+  border-radius: 100px;
+  border: 1px solid gray;
 }
