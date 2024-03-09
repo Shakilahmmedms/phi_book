@@ -8,8 +8,8 @@ class Posts(models.Model):
     content = models.TextField()
     image = models.ImageField(upload_to='posts/uploads/', blank=True, null=True)
     created_on = models.DateTimeField(auto_now_add=True, blank = True, null = True)
-    post_like = models.IntegerField(default=0,null=True,blank=True)
-    post_dislike = models.IntegerField(default=0,null=True,blank=True)
+    likes =  models.ManyToManyField(User, related_name='liked_posts', blank=True)
+  
     def __str__(self):
         return self.title
 
@@ -23,10 +23,10 @@ class Comment(models.Model):
     def __str__(self):
         return self.name
 
-class Like(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    post = models.ForeignKey(Posts, on_delete=models.CASCADE, related_name='likes')
-    like = models.IntegerField(default=0,null=True,blank=True)
-    dislike = models.IntegerField(default=0,null=True,blank=True)
-    like_permi = models.BooleanField(default=False,null=True,blank=True)
-    dislike_permi = models.BooleanField(default=False,null=True,blank=True)
+# class Like(models.Model):
+#     user = models.ForeignKey(User, on_delete=models.CASCADE)
+#     post = models.ForeignKey(Posts, on_delete=models.CASCADE, related_name='likes')
+#     like = models.IntegerField(default=0,null=True,blank=True)
+#     dislike = models.IntegerField(default=0,null=True,blank=True)
+#     like_permi = models.BooleanField(default=False,null=True,blank=True)
+#     dislike_permi = models.BooleanField(default=False,null=True,blank=True)

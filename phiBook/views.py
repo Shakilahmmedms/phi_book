@@ -9,6 +9,8 @@ from django.views.generic import DeleteView,DetailView
 
 def home(request):
     return render(request, 'index.html')
+def about(request):
+    return render(request, 'about.html')
 
 def dashboard(request):
     data = Posts.objects.all()

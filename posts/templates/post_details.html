@@ -4,10 +4,11 @@
 {% block content %}
 
 
-<div class="col-sm-12 mb-3 mb-sm-0">
+
+<div class="col-md-6 mb-3 mb-sm-0 m-auto">
   <div class="card mx-2 my-2">
     <div class="card-body">
-      <img src="{{posts.image.url}}" class="card-img-top w-25" alt="picture" />
+      <img src="{{posts.image.url}}" class="card-img-top w-100" alt="picture" />
       <h1 class="card-title font-bold">{{posts.title}}</h1>
       <p class="card-text">{{posts.content}}</p>
 
@@ -16,51 +17,54 @@
         <button class="btn btn-primary btn-sm disabled m-1">
           {{posts.user}}
         </button>
+
         {% if request.user.is_authenticated %}
-        <p><!-- Like Button -->
-          <form action="{% url 'like' posts.id posts.user.id %}" method="post">
-            {% csrf_token %}
-            <button type="submit" class="like-button">
-                {% if request.user in posts.likes.all %}
-                    <i class="fa-solid fa-thumbs-up"></i> Unlike
-                {% else %}
-                    <i class="fa-solid fa-thumbs-up"></i> Like
-                {% endif %}
-                {{ posts.likes.count }}
-            </button>
+      <div class="d-flex">
+        <form action="{% url 'like_post' posts.id  %}" method="post" >
+          {% csrf_token %}
+          <button type="submit" class="like-button">
+              {% if request.user in posts.likes.all %}
+                  <i class="fa-solid fa-thumbs-up"></i> Like
+              {% else %}
+                  <i class="fa-solid fa-thumbs-up"></i> Like
+              {% endif %}
+              {{ posts.likes.count }}
+          </button>
         </form>
-       
-        </p>
-        <p>   
-          <a class="p-10" href="#"><i class="fa-solid fa-thumbs-down"></i>Dislike</a>  
-        </p>
-        {% endif %}
+  
+      </div>
+  {% endif %}
+
       </p>
+      {% if request.user.is_authenticated %}
+      <div  iv class="card m-2">
+        <form method="post" class="pt-5">
+          <h1>Add Comment</h1>
+          {% csrf_token %} {{comment_form | crispy}}
+          <button class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+    
+    {% endif %}
+      <div class="card">
+        <h3 class="text-center mt-2">Total Comments :{{comments | length}}</h3>
+        {% for comment in comments %}
+        <div class="card-body border m-2">
+            <p><b>{{comment.name}}</b> {{comment.created_on}}</p>
+            <p>{{comment.body}}</p>
+        </div>
+        {% endfor %}
+      </div>
+
+      
+
     </div>
   </div>
+ 
 </div>
   
 
-  
-<div class="card m-2">
-  <h3 class="p-3">Total Comments :{{comments | length}}</h3>
-  {% for comment in comments %}
-  <div class="card-body border m-2">
-      <p><b>{{comment.name}}</b> {{comment.created_on}}</p>
-      <p>{{comment.body}}</p>
-  </div>
-  {% endfor %}
-</div>
 
-{% if request.user.is_authenticated %}
-<div class="card m-2">
-    <form method="post" class="pt-5">
-      <h1>Add Comment</h1>
-      {% csrf_token %} {{comment_form | crispy}}
-      <button class="btn btn-primary">Submit</button>
-    </form>
-</div>
-
-{% endif %}
+ 
 
 {% endblock %}

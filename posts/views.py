@@ -8,7 +8,7 @@ from django.urls import reverse_lazy
 from django.views.generic import UpdateView
 from django.views.generic import DeleteView,DetailView
 from django.contrib.auth.models import User
-from .models import  Posts,Like
+from .models import  Posts
 from django.shortcuts import get_object_or_404, redirect
 
 # Create your views here.
@@ -27,16 +27,6 @@ def add_post(request):
     return render(request, 'add_post.html', {'form': post_form})
 
 
-
-
-# def like_post(request, id):
-#     post = Posts.objects.get(id=id)
-#     if request.method == 'POST':
-#         if request.user.is_authenticated:
-#             post.post_like += 1
-#             post.save()
-#             return redirect('delails_post_view.html')
-#     return render('index.html',{'post_like':post} )
 
 
 
@@ -93,5 +83,18 @@ def delete_post(request,id):
 
 
 
+@login_required
+def like_post(request, post_id):
+    post = get_object_or_404(models.Posts, id=post_id)
+
+    if request.method == 'POST':
+        action = request.POST.get('action')
+        
+        if action == 'like':
+            post.likes.add(request.user)
+        elif action == 'unlike':
+            post.likes.remove(request.user)
+
+    return redirect('dashborad')
 
         

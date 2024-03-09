@@ -45,13 +45,32 @@
                 <img  src="{{ post.image.url }}" class="card-img-top w-100 mb-10" alt="{{ post.image.url}}">
                   <h5 class="card-title">{{post.title}}</h5>
                   <p class="card-text">{{post.content}}</p>
-                  <p>
-                    <a class="p-10" href="{% url 'delails_post_view' post.id  %}"><i class="fa-solid fa-thumbs-up"></i>Like {{post_like | length }}</a>
+                 
+                    <!-- <a class="p-15 ms-2" href="{% url 'delails_post_view' post.id  %}"><i class="fa-solid fa-thumbs-up"></i>Like {{post_like | length }}</a>
                     <a class="p-10" href="#"><i class="fa-solid fa-thumbs-down"></i>Dislike</a>  
-                    <a class="p-10" href="{% url 'delails_post_view' post.id %}"><i class="fa-solid fa-comment"></i>Comments {{comments | length}}</a>  
-                    <a class="p-10" href="{% url 'delails_post_view' post.id %}" class="text-success">View Details</a>
-                </p>
-                  <p></p>
+                    <a class="p-10" href="{% url 'delails_post_view' post.id %}"><i class="fa-solid fa-comment"></i>Comments {{comments | length}}</a>   -->
+                   
+                      <!-- Like button add -->
+                      <div class="d-flex">
+                        <form method="post"  class="like_button text-blue"  action="{% url 'like_post' post.id %}">
+                          {% csrf_token %}
+                          <button type="submit" name="action" value="{% if request.user in post.likes.all %}unlike{% else %}like{% endif %}" class="w-100 text-blue-900" style="margin-top: 40px;">
+                            {% if request.user in post.likes.all %}
+                            <a class="p-15 ms-2 "><i class="fa-solid fa-thumbs-up"></i>Like </a>
+                          
+                            {% else %}
+                            <a class="p-15 ms-2 "><i class="fa-solid fa-thumbs-up"></i>Like </a>
+                            {% endif %}
+                            <span class="ml-1">{{ post.likes.count }}</span>
+                          </button>
+                        </form>
+                      <a class="p-10" href="{% url 'delails_post_view' post.id %}"><i class="fa-solid fa-comment"></i>Comments {{post.comments.count}}</a>
+                      <!-- like button -->
+                  
+                     <a class="p-10" href="{% url 'delails_post_view' post.id %}" class="text-success">View Details</a>
+                    </div>
+              
+             
                   <!-- <h3 class="p-3">Total Comments :{{comments | length}}</h3> -->
                   <p class="card-text"><small class="text-body-secondary">{{post.created_on}}</small></p>
                   

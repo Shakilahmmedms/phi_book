@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+{% block style %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'contact_us.css' %}">
+
+
+
+
+{% endblock %}
+
+{% block content %}
+
+<!-- banner container  -->
+<div class="img-container">
+  <div class="text-over">
+    <h1>Say  <span class="phibook">Hi</span></h1>
+    <p>Where Magic Happens When You Reach Out to Us - We're Not Just Another Contact Page!
+    </p>
+    
+ </div>
+ <div class="text-over">
+  <a class="join-now" href="{% url 'register' %}">Let's Chat</a>
+ </div>
+</div>
+
+<!-- contact us -->
+
+
+	
+	
+
+
+
+<div class="container">
+  <div class="row w-100 h-auto mb-20">
+   
+    <div class="col-md-6 mt-5">
+      <img class="" src="{% static '4.png' %}" alt="">
+    </div>
+    <div class="col-md-5 ms-5" >
+
+      <h2 class="text-uppercase mt-5 font-weight-bold text-black">Contact Us</h2>
+      <form action="" method="post">
+        {% csrf_token %}
+        {{form | crispy}}
+        <button class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 mt-40">
+      <h1><strong>Reach Out</strong></h1>
+      <p class="font-bold">
+        <br>Phone: 1-800-PHIBOOK <br>
+        Email: info@phibook.com <br>
+        Address: Dhaka Bangladesh <br>
+        Working Hours: Mon-Fri: 9am-6pm</p>
+
+    </div>
+    
+       
+    <div class="col-md-5 m-10" id="map">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d115860.77945582692!2d89.287835854917!3d24.841662159966887!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39fc54e7e81df441%3A0x27133ed921fe73f4!2sBogura!5e0!3m2!1sen!2sbd!4v1709910140409!5m2!1sen!2sbd" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+
+  </div>
+</div>
+    
+
+{% endblock %}
+
+{% block script %}
+
+{% endblock %}

@@ -52,8 +52,10 @@ class UserSignupView(FormView):
     success_url = reverse_lazy('register')
 
     def form_valid(self, form):
-        
+        user = form.save(commit=False)
+        user.is_active = False
         user = form.save()
+        
         print(user)
         login(self.request,user)
         print(user)
@@ -61,7 +63,7 @@ class UserSignupView(FormView):
             self.request,
             f'Signup Successfully .Please check your email for conformation link'
         )
-        user.is_active = False
+        
         send_transaction_email(self.request.user, 'Register Confirm','login_email.html')
         return super().form_valid(form)
     
