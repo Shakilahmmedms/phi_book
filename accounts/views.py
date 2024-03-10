@@ -23,7 +23,7 @@ def send_transaction_email(user, subject, template):
         print("token ", token)
         uid = urlsafe_base64_encode(force_bytes(user.pk))
         print("uid ", uid)
-        confirm_link = f"http://127.0.0.1:8000/accounts/active/{uid}/{token}"
+        confirm_link = f"https://phi-book.onrender.com/accounts/active/{uid}/{token}"
         message = render_to_string(template, {
             'user' : user,
             'meet_link': confirm_link
