@@ -23,14 +23,14 @@
 {% endfor %} {% endif %}
 
 
-<div class="bg-white rounded-xl pt-5">
-    <h1 class="font-bold text-3xl text-center pb-5">Registration Form</h1>
-   <div class="d-flex justify-content-center align-items-center">
+<div class=" rounded-xl pt-5">
+    <h1 class="font-bold text-3xl text-center pb-2">Registration</h1>
+   <div class="d-flex justify-content-center align-items-center w-100">
     <div class="ms-5">
-        <img class="w-75" src="{% static 'Sign_up.png' %}" alt="">
+        <img class="w-100" src="{% static 'login-1.png' %}" alt="">
     </div>
     <div class="w-75 mt-10">
-        <form method="post" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+        <form method="post" class="bg-white shadow-lg rounded-xl px-8 pt-6 pb-8 mb-4 me-5">
             {% csrf_token %} {% for hidden_field in form.hidden_fields %} {{ hidden_field.errors }} {{ hidden_field }} {% endfor %}
             
             <div class="flex flex-wrap -mx-3 mb-6">
@@ -114,10 +114,13 @@
                 </div>
             </div>
           
-            <div class="flex items-center justify-between">
-                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+            <div class="flex items-center justify-between mb-5">
+                <button class="bg-blue-500 m-auto px-10 hover:bg-blue-700 text-white font-bold py-2 px-8 rounded focus:outline-none focus:shadow-outline" type="submit">
                     Register
                 </button>
+            </div>
+            <div>
+                <p>Aleady have an account? <a href="{% url 'login' %}">Login</a> </p>
             </div>
         </form>
     </div>
