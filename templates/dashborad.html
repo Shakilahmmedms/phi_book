@@ -38,11 +38,12 @@
             <h1>Our Soical Posts</h1>
           
             {% for post in data %}
-            <div class="card mb-10 ">
+            <div class="card mb-10 " style="border-radius: 20px !important;">
                 
                 <div class="card-body">
                 <p>Posted By {{post.user}}</p>
-                <img  src="{{ post.image.url }}" class="card-img-top w-100 mb-10" alt="{{ post.image.url}}">
+                
+                <img style="border-radius: 20px !important;"  src="{{ post.image.url }}" class="card-img-top w-100 mb-10" alt="{{ post.image.url}}">
                   <h5 class="card-title">{{post.title}}</h5>
                   <p class="card-text">{{post.content}}</p>
                  
@@ -51,7 +52,7 @@
                     <a class="p-10" href="{% url 'delails_post_view' post.id %}"><i class="fa-solid fa-comment"></i>Comments {{comments | length}}</a>   -->
                    
                       <!-- Like button add -->
-                      <div class="d-flex">
+                      <div class="d-flex" >
                         <form method="post"  class="like_button text-blue"  action="{% url 'like_post' post.id %}">
                           {% csrf_token %}
                           <button type="submit" name="action" value="{% if request.user in post.likes.all %}unlike{% else %}like{% endif %}" class="w-100 text-blue-900" style="margin-top: 40px;">

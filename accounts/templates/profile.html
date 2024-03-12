@@ -43,9 +43,7 @@
                         </ul>
                             
                             <!-- User button -->
-                        <div class="user-button">
-                          
-                        </div><!-- End div .user-button -->
+                    
                     </div><!-- End div .box-info -->
                     <!-- Begin user profile -->
                 </div><!-- End div .col-sm-4 -->
@@ -62,29 +60,29 @@
                                     
                                     <!-- Begin timeline -->
                                     <div class="the-timeline">
-                                        <form role="form" class="post-to-timeline">
-                                            <textarea class="form-control" style="height: 70px;margin-bottom:10px;" placeholder="Whats on your mind..."></textarea>
+                                        <form role="form" class="post-to-timeline d-flex">
+                                            <textarea class="form-control mt-1" style="height: 70px;margin-bottom:10px;border-radius: 20px;width: 500px;" placeholder="Whats on your mind..."></textarea>
                                             <div class="row">
                                             <!-- <div class="col-sm-6">
                                                 <a class="btn btn-sm btn-default"><i class="fa fa-camera"></i></a>
                                                 <a class="btn btn-sm btn-default"><i class="fa fa-video-camera"></i></a>
                                                 <a class="btn btn-sm btn-default"><i class="fa fa-map-marker"></i></a>
                                             </div> -->
-                                            <div class="col-sm-6 text-right"><a href="{%  url 'add_post' %}" type="submit" class="btn btn-primary">Add Post</a></div>
+                                            <div class="col-sm-6 text-right mt-3 ms-3"><a href="{%  url 'add_post' %}" type="submit" class="btn btn-primary">Post</a></div>
                                             </div>
                                         </form>
                                         <br><br>
-                                        <ul class="m-10 mt-10">
+                                        <ul class="ms-10 ">
                                       
                                         {% for post in posts %}
-                                            <li class="bg-white pt-2 border-bottom p-2">
-                                               
-                                                <img class="w-100" src="{{post.image.url}}" alt="Picture">
-                                                <h4>{{post.title}}</h4>
+                                            <li class="bg-white pt-2 border-bottom p-2 w-75" style="border-radius: 20px;margin-bottom: 5px;">
+                                              
+                                                <img style="border-radius: 20px;" class="w-100" src="{{post.image.url}}" alt="Picture">
+                                                <h4 class="mt-2">{{post.title}}</h4>
                                                 <p>
                                                 {{post.content}}
                                                 </p>
-                                                <p>Posted by {{post.user}}</p>
+                                                <!-- <p>Posted by {{post.user}}</p> -->
                                                 <div class="the-date">
                                                   {{post.created_on}}
                                               </div>

@@ -5,9 +5,6 @@
 {% load static %}
 <link rel="stylesheet" href="{% static 'contact_us.css' %}">
 
-
-
-
 {% endblock %}
 
 {% block content %}
@@ -39,16 +36,13 @@
     <div class="col-md-6 mt-5">
       <img class="" src="{% static '4.png' %}" alt="">
     </div>
-    <div class="col-md-5 ms-5" >
+    <div class="col-md-5 ms-5 mt-5" >
 
-      <h2 class="text-uppercase mt-5 font-weight-bold text-black">Contact Us</h2>
-      <form action="" method="post">
+      
+      <form action="" method="post" style="box-shadow: 4px 4px 8px gray;padding: 30px 30px;border-radius: 20px;">
+        <h2 class="text-uppercase mt-2 font-weight-bold text-black">Contact Us</h2>
         {% csrf_token %}
         {{form | crispy}}
-        <!-- Text Field Example -->
-       
-
-
         <button class="btn btn-primary">Submit</button>
       </form>
     </div>

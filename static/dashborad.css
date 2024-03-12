@@ -308,7 +308,8 @@
         background-color: #fff;
         color: #4F5256;
         border: 1px solid rgba(0, 0, 0, .12);
-        margin-bottom: 8px
+        margin-bottom: 8px;
+      
     }
     
     @media only screen and (min-width:480px) {

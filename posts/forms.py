@@ -2,6 +2,7 @@ from django import forms
 from .models import Posts,Comment
 
 class PostForm(forms.ModelForm):
+    content = forms.CharField(label='Content', widget=forms.Textarea(attrs={'class': 'custom-input', 'rows': 4}))
     class Meta:
         model = Posts
         # fields = ['title','content','image']
