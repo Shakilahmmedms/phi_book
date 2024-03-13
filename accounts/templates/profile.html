@@ -7,326 +7,230 @@
 {% endblock %}
 
 {% block content %}
-<div class="container bootdey">
-    <div class="content-page">
-        <div class="profile-banner" style="background:url(https://bootdey.com/img/Content/bg1.jpg);">
-            <div class="col-sm-3 avatar-container">
-                <img src="{% static 'avatar.png' %}" class="img-circle profile-avatar" alt="User avatar">
-            </div>
+<div class="container">
+  <div class="main-body ">
+  
+        <!-- Breadcrumb -->
+        <nav aria-label="breadcrumb" class="main-breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
            
-        </div>
-        <div class="content">
-    
-            <div class="row">
-                <div class="col-sm-3">
-                    <!-- Begin user profile -->
-                    <div class="text-center user-profile-2" style="margin-top:120px">
-                        <ul class="list-group">
-                          <li class="list-group-item">
-                           
-                            <h2>{{request.user.first_name}} {{request.user.last_name}}</h2>
-                           <h5><a href="{% url 'edit_profile' %}">Edit Your Profile</a></h5>
-      
-                          </li>
-                          <li class="list-group-item">
-                       
-                            Followers
-                          </li>
-                          <li class="list-group-item">
-                        
-                            Following
-                          </li>
-                          <li class="list-group-item">
-                         
-                            Tweets
-                          </li>
-                        </ul>
-                            
-                            <!-- User button -->
-                    
-                    </div><!-- End div .box-info -->
-                    <!-- Begin user profile -->
-                </div><!-- End div .col-sm-4 -->
-                
-                <div class="col-sm-9">
-                    <div class="widget widget-tabbed">
-                       
-                        <div class="tab-content">
-                            
-                            
-                            <!-- Tab timeline -->
-                            <div class="tab-pane animated active fadeInRight" id="my-timeline">
-                                <div class="user-profile-content">
-                                    
-                                    <!-- Begin timeline -->
-                                    <div class="the-timeline">
-                                        <form role="form" class="post-to-timeline d-flex">
-                                            <textarea class="form-control mt-1" style="height: 70px;margin-bottom:10px;border-radius: 20px;width: 500px;" placeholder="Whats on your mind..."></textarea>
-                                            <div class="row">
-                                            <!-- <div class="col-sm-6">
-                                                <a class="btn btn-sm btn-default"><i class="fa fa-camera"></i></a>
-                                                <a class="btn btn-sm btn-default"><i class="fa fa-video-camera"></i></a>
-                                                <a class="btn btn-sm btn-default"><i class="fa fa-map-marker"></i></a>
-                                            </div> -->
-                                            <div class="col-sm-6 text-right mt-3 ms-3"><a href="{%  url 'add_post' %}" type="submit" class="btn btn-primary">Post</a></div>
-                                            </div>
-                                        </form>
-                                        <br><br>
-                                        <ul class="ms-10 ">
+            <li class="breadcrumb-item active" aria-current="page">User Profile</li>
+          </ol>
+        </nav>
+        <!-- /Breadcrumb -->
+  
+        <div class="row gutters-sm">
+          <div class="col-md-3 mb-3">
+            <div class="card">
+              <div class="card-body">
+                <div class="d-flex flex-column align-items-center text-center">
+                  <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
+                  <div class="mt-3">
+                    <h4>{{request.user.first_name}} {{request.user.last_name}}</h4>
+                    <p class="text-secondary mb-1">Full Stack Developer</p>
+                    <p class="text-muted font-size-sm"><a href="{% url 'edit_profile' %}" >Edit Profile</a></p>
+                    <button class="btn btn-primary">Follow</button>
+                    <button class="btn btn-outline-primary">Message</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card mt-3">
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                  <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-globe mr-2 icon-inline"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>Website</h6>
+                  <a href="https://phi-book.onrender.com" target="_blank" class="text-secondary">Visit</a>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                  <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github mr-2 icon-inline"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>Github</h6>
+                  <a target="_blank" href="https://github.com/Shakilahmmedms" class="text-secondary">View</a>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                  <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-twitter mr-2 icon-inline text-info"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>Twitter</h6>
+                  <a target="_blank" href="https://twitter.com/ShakilA83852263" class="text-secondary">View</a>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                  <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-instagram mr-2 icon-inline text-danger"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>Instagram</h6>
+                  <a target="_blank" href="https://www.instagram.com/shakil_ahmmed01/" class="text-secondary">View</a>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                  <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-facebook mr-2 icon-inline text-primary"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>Facebook</h6>
+                  <a target="_blank" href="https://www.facebook.com/shakil.ahmmedbd.3" class="text-secondary">View</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-6">
+           
+
+            <ul class="">
                                       
-                                        {% for post in posts %}
-                                            <li class="bg-white pt-2 border-bottom p-2 w-75" style="border-radius: 20px;margin-bottom: 5px;">
-                                              
-                                                <img style="border-radius: 20px;" class="w-100" src="{{post.image.url}}" alt="Picture">
-                                                <h4 class="mt-2">{{post.title}}</h4>
-                                                <p>
-                                                {{post.content}}
-                                                </p>
-                                                <!-- <p>Posted by {{post.user}}</p> -->
-                                                <div class="the-date">
-                                                  {{post.created_on}}
-                                              </div>
-                                                <p>
-                                                  <a class="p-10" href="#"><i class="fa-solid fa-thumbs-up"></i>Like</a>
-                                                  <a class="p-10" href="#"><i class="fa-solid fa-thumbs-down"></i>Dislike</a>
-                                                  <a class="p-10" href="{% url 'delails_post_view' post.id %}"><i class="fa-solid fa-comment"></i>Comments {{comments | length}}</a>   
-                                                </p>
-                                                <p>
-                                                <a class="me-5" href="{% url 'edit_post' post.id %}">Edit </a>
-                                                <a href="{% url 'delete_post' post.id %}"> Delete</a></P>
-                                                
-                                            </li>
-                                            
+              {% for post in posts %}
+                  <li class="bg-white pt-2 border-bottom p-2 " style="border-radius: 20px;margin-bottom: 5px;">
+                    
+                      <img style="border-radius: 20px;" class="w-100" src="{{post.image.url}}" alt="Picture">
+                      <h4 class="mt-2">{{post.title}}</h4>
+                      <p>
+                      {{post.content}}
+                      </p>
+                      <!-- <p>Posted by {{post.user}}</p> -->
+                      <div class="the-date">
+                        {{post.created_on}}
+                    </div>
+                      <p>
+                        <a class="p-10" href="#"><i class="fa-solid fa-thumbs-up"></i>Like</a>
+                        <a class="p-10" href="#"><i class="fa-solid fa-thumbs-down"></i>Dislike</a>
+                        <a class="p-10" href="{% url 'delails_post_view' post.id %}"><i class="fa-solid fa-comment"></i>Comments {{comments | length}}</a>   
+                      </p>
+                      <p>
+                      <a class="me-5" href="{% url 'edit_post' post.id %}">Edit </a>
+                      <a href="{% url 'delete_post' post.id %}"> Delete</a></P>
+                      
+                  </li>
+                  
+                  {% endfor %}
+           
+              </ul>
+
+              
+
+          </div>
+
+          <div class="d-none d-xl-block col-md-3 right-wrapper">
+            <div class="row">
+                <div class="col-md-12 grid-margin">
+                    <div class="card rounded">
+                        <div class="card-body">
+                            <h6 class="card-title">latest photos</h6>
+                            <div class="latest-photos">
+                                
+                              
+                                        <figure>
+                                            {% for post in posts %}
+                                            <img class="img-fluid mb-1 w-100" src="{{post.image.url}}" alt="">
                                             {% endfor %}
-                                     
-                                        </ul>
-                                    </div><!-- End div .the-timeline -->
-                                    <!-- End timeline -->
-                                </div><!-- End div .user-profile-content -->
-                            </div><!-- End div .tab-pane -->
-                            <!-- End Tab timeline -->
-                            
-                            <!-- Tab about -->
-                            <div class="tab-pane animated fadeInRight" id="about">
-                                <div class="user-profile-content">
-                                    <h5><strong>ABOUT</strong> ME</h5>
-                                    <p>
-                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. 
-                                    </p>
-                                    <hr>
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <h5><strong>CONTACT</strong> ME</h5>
-                                                <address>
-                                                    <strong>Phone</strong><br>
-                                                    <abbr title="Phone">+62 857 123 4567</abbr>
-                                                </address>
-                                                <address>
-                                                    <strong>Email</strong><br>
-                                                    <a href="mailto:#">first.last@example.com</a>
-                                                </address>
-                                                <address>
-                                                    <strong>Website</strong><br>
-                                                    <a href="http://r209.com">http://r209.com</a>
-                                                </address>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <h5><strong>MY</strong> SKILLS</h5>
-                                            <p>UI Design</p>
-                                            <p>Clean and Modern Web Design</p>
-                                            <p>PHP and MySQL Programming</p>
-                                            <p>Vector Design</p>
-                                        </div>
-                                    </div><!-- End div .row -->
-                                </div><!-- End div .user-profile-content -->
-                            </div><!-- End div .tab-pane -->
-                            <!-- End Tab about -->
-                            
-                            
-                            <!-- Tab user activities -->
-                            <div class="tab-pane animated fadeInRight" id="user-activities">
-                                <div class="scroll-user-widget">
-                                    <ul class="media-list">
-                                        <li class="media">
-                                            <a href="#fakelink">
-                                            <p><strong>John Doe</strong> Uploaded a photo <strong>"DSC000254.jpg"</strong>
-                                            <br><i>2 minutes ago</i></p>
-                                            </a>
-                                        </li>
-                                        <li class="media">
-                                            <a href="#fakelink">
-                                            <p><strong>John Doe</strong> Created an photo album  <strong>"Indonesia Tourism"</strong>
-                                            <br><i>8 minutes ago</i></p>
-                                            </a>
-                                        </li>
-                                        <li class="media">
-                                            <a href="#fakelink">
-                                            <p><strong>Annisa</strong> Posted an article  <strong>"Yogyakarta never ending Asia"</strong>
-                                            <br><i>an hour ago</i></p>
-                                            </a>
-                                        </li>
-                                        <li class="media">
-                                            <a href="#fakelink">
-                                            <p><strong>Ari Rusmanto</strong> Added 3 products
-                                            <br><i>3 hours ago</i></p>
-                                            </a>
-                                        </li>
-                                        <li class="media">
-                                            <a href="#fakelink">
-                                            <p><strong>Hana Sartika</strong> Send you a message  <strong>"Lorem ipsum dolor..."</strong>
-                                            <br><i>12 hours ago</i></p>
-                                            </a>
-                                        </li>
-                                        <li class="media">
-                                            <a href="#fakelink">
-                                            <p><strong>Johnny Depp</strong> Updated his avatar
-                                            <br><i>Yesterday</i></p>
-                                            </a>
-                                        </li>
-                                        <li class="media">
-                                            <a href="#fakelink">
-                                            <p><strong>John Doe</strong> Uploaded a photo <strong>"DSC000254.jpg"</strong>
-                                            <br><i>2 minutes ago</i></p>
-                                            </a>
-                                        </li>
-                                        <li class="media">
-                                            <a href="#fakelink">
-                                            <p><strong>John Doe</strong> Created an photo album  <strong>"Indonesia Tourism"</strong>
-                                            <br><i>8 minutes ago</i></p>
-                                            </a>
-                                        </li>
-                                        <li class="media">
-                                            <a href="#fakelink">
-                                            <p><strong>Annisa</strong> Posted an article  <strong>"Yogyakarta never ending Asia"</strong>
-                                            <br><i>an hour ago</i></p>
-                                            </a>
-                                        </li>
-                                        <li class="media">
-                                            <a href="#fakelink">
-                                            <p><strong>Ari Rusmanto</strong> Added 3 products
-                                            <br><i>3 hours ago</i></p>
-                                            </a>
-                                        </li>
-                                        <li class="media">
-                                            <a href="#fakelink">
-                                            <p><strong>Hana Sartika</strong> Send you a message  <strong>"Lorem ipsum dolor..."</strong>
-                                            <br><i>12 hours ago</i></p>
-                                            </a>
-                                        </li>
-                                        <li class="media">
-                                            <a href="#fakelink">
-                                            <p><strong>Johnny Depp</strong> Updated his avatar
-                                            <br><i>Yesterday</i></p>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div><!-- End div .scroll-user-widget -->
-                            </div><!-- End div .tab-pane -->
-                            <!-- End Tab user activities -->
-                            
-                            <!-- Tab user messages -->
-                            <div class="tab-pane animated fadeInRight" id="mymessage">
-                                <div class="scroll-user-widget">
-                                    <ul class="media-list">
-                                      <li class="media">
-                                        <a class="pull-left" href="#fakelink">
-                                          <img class="media-object user-message" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="Avatar">
-                                        </a>
-                                        <div class="media-body">
-                                          <h4 class="media-heading"><a href="#fakelink">John Doe</a> <small>Just now</small></h4>
-                                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-                                        </div>
-                                      </li>
-                                      <li class="media">
-                                        <a class="pull-left" href="#fakelink">
-                                          <img class="media-object user-message" src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="Avatar">
-                                        </a>
-                                        <div class="media-body">
-                                          <h4 class="media-heading"><a href="#fakelink">Annisa</a> <small>Yesterday at 04:00 AM</small></h4>
-                                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam rhoncus</p>
-                                        </div>
-                                      </li>
-                                      <li class="media">
-                                        <a class="pull-left" href="#fakelink">
-                                          <img class="media-object user-message" src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="Avatar">
-                                        </a>
-                                        <div class="media-body">
-                                          <h4 class="media-heading"><a href="#fakelink">Rusmanovski</a> <small>January 17, 2014 05:35 PM</small></h4>
-                                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-                                        </div>
-                                      </li>
-                                      <li class="media">
-                                        <a class="pull-left" href="#fakelink">
-                                          <img class="media-object user-message" src="https://bootdey.com/img/Content/avatar/avatar4.png" alt="Avatar">
-                                        </a>
-                                        <div class="media-body">
-                                          <h4 class="media-heading"><a href="#fakelink">Ari Rusmanto</a> <small>January 17, 2014 05:35 PM</small></h4>
-                                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-                                        </div>
-                                      </li>
-                                      <li class="media">
-                                        <a class="pull-left" href="#fakelink">
-                                          <img class="media-object user-message" src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="Avatar">
-                                        </a>
-                                        <div class="media-body">
-                                          <h4 class="media-heading"><a href="#fakelink">Jenny Doe</a> <small>January 17, 2014 05:35 PM</small></h4>
-                                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-                                        </div>
-                                      </li>
-                                      <li class="media">
-                                        <a class="pull-left" href="#fakelink">
-                                          <img class="media-object user-message" src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="Avatar">
-                                        </a>
-                                        <div class="media-body">
-                                          <h4 class="media-heading"><a href="#fakelink">John Doe</a> <small>Just now</small></h4>
-                                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-                                        </div>
-                                      </li>
-                                      <li class="media">
-                                        <a class="pull-left" href="#fakelink">
-                                          <img class="media-object user-message" src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="Avatar">
-                                        </a>
-                                        <div class="media-body">
-                                          <h4 class="media-heading"><a href="#fakelink">Annisa</a> <small>Yesterday at 04:00 AM</small></h4>
-                                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam rhoncus</p>
-                                        </div>
-                                      </li>
-                                      <li class="media">
-                                        <a class="pull-left" href="#fakelink">
-                                          <img class="media-object user-message" src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="Avatar">
-                                        </a>
-                                        <div class="media-body">
-                                          <h4 class="media-heading"><a href="#fakelink">Rusmanovski</a> <small>January 17, 2014 05:35 PM</small></h4>
-                                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-                                        </div>
-                                      </li>
-                                      <li class="media">
-                                        <a class="pull-left" href="#fakelink">
-                                          <img class="media-object user-message" src="https://bootdey.com/img/Content/avatar/avatar4.png" alt="Avatar">
-                                        </a>
-                                        <div class="media-body">
-                                          <h4 class="media-heading"><a href="#fakelink">Ari Rusmanto</a> <small>January 17, 2014 05:35 PM</small></h4>
-                                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-                                        </div>
-                                      </li>
-                                      <li class="media">
-                                        <a class="pull-left" href="#fakelink">
-                                          <img class="media-object user-message" src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="Avatar">
-                                        </a>
-                                        <div class="media-body">
-                                          <h4 class="media-heading"><a href="#fakelink">Jenny Doe</a> <small>January 17, 2014 05:35 PM</small></h4>
-                                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-                                        </div>
-                                      </li>
-                                    </ul>
-                                </div><!-- End div .scroll-user-widget -->
-                            </div><!-- End div .tab-pane -->
-                            <!-- End Tab user messages -->
-                        </div><!-- End div .tab-content -->
-                    </div><!-- End div .box-info -->
+                                        </figure>
+                                
+                              
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 grid-margin">
+                    <div class="card rounded">
+                        <div class="card-body">
+                            <h6 class="card-title">suggestions for you</h6>
+                            <div class="d-flex justify-content-between mb-2 pb-2 border-bottom">
+                                <div class="d-flex align-items-center hover-pointer">
+                                    <img class="img-xs rounded-circle w-25" src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="">
+                                    <div class="ml-2">
+                                        <p>Mike Popescu</p>
+                                        <p class="tx-11 text-muted">12 Mutual Friends</p>
+                                    </div>
+                                </div>
+                                <button class="btn btn-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user-plus" data-toggle="tooltip" title="" data-original-title="Connect">
+                                        <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                        <circle cx="8.5" cy="7" r="4"></circle>
+                                        <line x1="20" y1="8" x2="20" y2="14"></line>
+                                        <line x1="23" y1="11" x2="17" y2="11"></line>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="d-flex justify-content-between mb-2 pb-2 border-bottom">
+                                <div class="d-flex align-items-center hover-pointer">
+                                    <img class="img-xs rounded-circle w-25" src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="">
+                                    <div class="ml-2">
+                                        <p>Mike Popescu</p>
+                                        <p class="tx-11 text-muted">12 Mutual Friends</p>
+                                    </div>
+                                </div>
+                                <button class="btn btn-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user-plus" data-toggle="tooltip" title="" data-original-title="Connect">
+                                        <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                        <circle cx="8.5" cy="7" r="4"></circle>
+                                        <line x1="20" y1="8" x2="20" y2="14"></line>
+                                        <line x1="23" y1="11" x2="17" y2="11"></line>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="d-flex justify-content-between mb-2 pb-2 border-bottom">
+                                <div class="d-flex align-items-center hover-pointer">
+                                    <img class="img-xs rounded-circle w-25" src="https://bootdey.com/img/Content/avatar/avatar4.png" alt="">
+                                    <div class="ml-2">
+                                        <p>Mike Popescu</p>
+                                        <p class="tx-11 text-muted">12 Mutual Friends</p>
+                                    </div>
+                                </div>
+                                <button class="btn btn-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user-plus" data-toggle="tooltip" title="" data-original-title="Connect">
+                                        <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                        <circle cx="8.5" cy="7" r="4"></circle>
+                                        <line x1="20" y1="8" x2="20" y2="14"></line>
+                                        <line x1="23" y1="11" x2="17" y2="11"></line>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="d-flex justify-content-between mb-2 pb-2 border-bottom">
+                                <div class="d-flex align-items-center hover-pointer">
+                                    <img class="img-xs rounded-circle w-25" src="https://bootdey.com/img/Content/avatar/avatar5.png" alt="">
+                                    <div class="ml-2">
+                                        <p>Mike Popescu</p>
+                                        <p class="tx-11 text-muted">12 Mutual Friends</p>
+                                    </div>
+                                </div>
+                                <button class="btn btn-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user-plus" data-toggle="tooltip" title="" data-original-title="Connect">
+                                        <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                        <circle cx="8.5" cy="7" r="4"></circle>
+                                        <line x1="20" y1="8" x2="20" y2="14"></line>
+                                        <line x1="23" y1="11" x2="17" y2="11"></line>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="d-flex justify-content-between mb-2 pb-2 border-bottom">
+                                <div class="d-flex align-items-center hover-pointer">
+                                    <img class="img-xs rounded-circle w-25" src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="">
+                                    <div class="ml-2">
+                                        <p>Mike Popescu</p>
+                                        <p class="tx-11 text-muted">12 Mutual Friends</p>
+                                    </div>
+                                </div>
+                                <button class="btn btn-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user-plus" data-toggle="tooltip" title="" data-original-title="Connect">
+                                        <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                        <circle cx="8.5" cy="7" r="4"></circle>
+                                        <line x1="20" y1="8" x2="20" y2="14"></line>
+                                        <line x1="23" y1="11" x2="17" y2="11"></line>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <div class="d-flex align-items-center hover-pointer">
+                                    <img class="img-xs rounded-circle w-25" src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="">
+                                    <div class="ml-2">
+                                        <p>Mike Popescu</p>
+                                        <p class="tx-11 text-muted">12 Mutual Friends</p>
+                                    </div>
+                                </div>
+                                <button class="btn btn-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user-plus" data-toggle="tooltip" title="" data-original-title="Connect">
+                                        <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                        <circle cx="8.5" cy="7" r="4"></circle>
+                                        <line x1="20" y1="8" x2="20" y2="14"></line>
+                                        <line x1="23" y1="11" x2="17" y2="11"></line>
+                                    </svg>
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>	
-    </div>
-    </div>
+        </div>
+        </div>
+
+      </div>
+  </div>
 {% endblock %}
