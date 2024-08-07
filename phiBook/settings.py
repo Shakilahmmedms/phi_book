@@ -97,7 +97,7 @@ DATABASES = {
 # DATABASES = {
 #     'default': dj_database_url.config(
 #         # Replace this value with your local database's connection string.
-#         default='postgres://library_management_n1tq_user:mIqU2wGxqB2JFyxhBcAfg3vwqASBA8ec@dpg-cnd7epda73kc73b67q3g-a.oregon-postgres.render.com/library_management_n1tq',
+#         default='postgresql://phi_book_user:j621gBmMUxDqS0z237Zx4OED5dQLMPPc@dpg-cqpib55svqrc73fs4bgg-a.oregon-postgres.render.com/phi_book',
 #     )
 # }
 
